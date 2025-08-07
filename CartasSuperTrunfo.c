@@ -8,6 +8,8 @@ int main (){
     float area1, area2; //variavel da area das carta 1 e 2
     float pib1, pib2; //variavel do PIB das duas cartas 
     int pontosTuristicos1, pontosTuristicos2; //variavel dos pontos turistico das cartas 1 e 2
+    float densidadePopulacional1, densidadePopulacional2;
+    float pibPerCapita1, pibPerCapita2;
 
     printf("================================\n");
     printf("BEM-VINDO AO CADASTRO DE CARTAS!\n"); //exibe uma mensagem de boas-vindas ao sistema
@@ -37,6 +39,9 @@ int main (){
     printf("Informe o número de pontos turísticos: ");
     scanf("%d", &pontosTuristicos1);
 
+    densidadePopulacional1 = populacao1 / area1;
+    pibPerCapita1 = (pib1 * 1000000000.0) / populacao1;
+
     printf("\nCARTA 1 FINALIZADA."); // informa e imprime que o cadastro da carta 1 foi concluida
 
     printf("\n\nPREPARANDO PRÓXIMA CARTA....."); // imprime uma mensagem antes de começar o cadastro dda carta 2
@@ -63,6 +68,9 @@ int main (){
     
     printf("Informe o número de pontos turísticos: ");
     scanf("%d", &pontosTuristicos2);
+
+    densidadePopulacional2 = populacao2 / area2;
+    pibPerCapita2 = (pib2 * 1000000000.0) / populacao2;
     
     printf("\nMUITO BEEEEM! \nFIM DO CADASTRO, BORA VERIFICAR AS INFORMAÇÕES!"); // imprime uma mensagem de conclusao do cadastro
 
@@ -74,6 +82,8 @@ int main (){
         "\nÁrea: %.2f km²"
         "\nPIB: %.2f bilhões de reais"
         "\nNúmero de Pontos Tutísticos: %d"
+        "\nDensidade Populaciona: %.2f hab/km²"
+        "\nPIB per Capita: %.2f reais"
 
         "\n\nCarta 2:"
         "\nEstado: %c"
@@ -82,8 +92,11 @@ int main (){
         "\nPopulação: %d habitantes"
         "\nÁrea: %.2f km²"
         "\nPIB: %.2f bilhões de reais"
-        "\nNúmero de Pontos Tutísticos: %d \n\n",
-        estado1, codigo1, cidade1, populacao1, area1, pib1, pontosTuristicos1,
-        estado2, codigo2, cidade2, populacao2, area2, pib2, pontosTuristicos2);
+        "\nNúmero de Pontos Tutísticos: %d"
+        "\nDensidade Populacional: %.2f hab/km²"
+        "\nPIB pe Capita: %.2f reais",
+
+        estado1, codigo1, cidade1, populacao1, area1, pib1, pontosTuristicos1, densidadePopulacional1, pibPerCapita1,
+        estado2, codigo2, cidade2, populacao2, area2, pib2, pontosTuristicos2, densidadePopulacional2, pibPerCapita2);
         return  0;
 }

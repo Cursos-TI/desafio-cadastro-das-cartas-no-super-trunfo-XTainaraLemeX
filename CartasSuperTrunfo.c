@@ -11,7 +11,9 @@ int main (){
     float densidadePopulacional1, densidadePopulacional2;
     float pibPerCapita1, pibPerCapita2;
     float superPoder1, superPoder2;
-    int vitoriasCarta1, vitoriasCarta2;
+    int vitoriasCarta1 = 0;
+    int vitoriasCarta2 = 0;
+    float bilhao = 1000000000.0f;
 
     printf("================================\n");
     printf("BEM-VINDO AO CADASTRO DE CARTAS!\n"); //exibe uma mensagem de boas-vindas ao sistema
@@ -42,9 +44,9 @@ int main (){
     scanf("%d", &pontosTuristicos1);
 
     densidadePopulacional1 = populacao1 / area1;
-    pibPerCapita1 = (pib1 * 1000000000.0) / populacao1;
+    pibPerCapita1 = (pib1 * bilhao) / populacao1;
 
-    superPoder1 = (float) populacao1 + area1 + pib1 + (float) pontosTuristicos1 + pibPerCapita1 + ((float) 1/ densidadePopulacional1);
+    superPoder1 = (float) populacao1 + area1 + pib1 + (float) pontosTuristicos1 + (pibPerCapita1 / bilhao) + ((float) 1/ densidadePopulacional1);
 
     printf("\nCARTA 1 FINALIZADA."); // informa e imprime que o cadastro da carta 1 foi concluida
 
@@ -74,9 +76,9 @@ int main (){
     scanf("%d", &pontosTuristicos2);
 
     densidadePopulacional2 = populacao2 / area2;
-    pibPerCapita2 = (pib2 * 1000000000.0) / populacao2;
+    pibPerCapita2 = (pib2 * bilhao) / populacao2;
 
-    superPoder2 = (float) populacao2 + area2 + pib2 + (float) pontosTuristicos2 + pibPerCapita2 + ((float) 1/ densidadePopulacional2);
+    superPoder2 = (float) populacao2 + area2 + pib2 + (float) pontosTuristicos2 + (pibPerCapita2 / bilhao) + ((float) 1/ densidadePopulacional2);
     
     printf("\nMUITO BEEEEM! \nFIM DO CADASTRO, BORA VERIFICAR AS INFORMAÇÕES!"); // imprime uma mensagem de conclusao do cadastro
 
@@ -90,6 +92,7 @@ int main (){
         "\nNúmero de Pontos Tutísticos: %d"
         "\nDensidade Populaciona: %.2f hab/km²"
         "\nPIB per Capita: %.2f reais"
+        "\nSuper Poder: %.2f"
 
         "\n\nCarta 2:"
         "\nEstado: %c"
@@ -100,10 +103,11 @@ int main (){
         "\nPIB: %.2f bilhões de reais"
         "\nNúmero de Pontos Tutísticos: %d"
         "\nDensidade Populacional: %.2f hab/km²"
-        "\nPIB pe Capita: %.2f reais",
+        "\nPIB pe Capita: %.2f reais"
+        "\nSuper Poder: %.2f",
 
-        estado1, codigo1, cidade1, populacao1, area1, pib1, pontosTuristicos1, densidadePopulacional1, pibPerCapita1,
-        estado2, codigo2, cidade2, populacao2, area2, pib2, pontosTuristicos2, densidadePopulacional2, pibPerCapita2);
+        estado1, codigo1, cidade1, populacao1, area1, pib1, pontosTuristicos1, densidadePopulacional1, pibPerCapita1, superPoder1, 
+        estado2, codigo2, cidade2, populacao2, area2, pib2, pontosTuristicos2, densidadePopulacional2, pibPerCapita2, superPoder2);
 
         printf("\n\nComparação De Cartas: \n");
 
@@ -112,16 +116,16 @@ int main (){
         vitoriasCarta2 += (populacao2 > populacao1);
         printf("Área: %d\n", area1 > area2);
         vitoriasCarta1 += (area1 > area2);
-        vitoriasCarta2 += (area2 > area2);
+        vitoriasCarta2 += (area2 > area1);
         printf("PIB: %d\n", pib1 > pib2);
         vitoriasCarta1 += (pib1 > pib2);
         vitoriasCarta2 += (pib2 > pib1);
         printf("Pontos Turísticos: %d\n", pontosTuristicos1 > pontosTuristicos2);
         vitoriasCarta1 += (pontosTuristicos1 > pontosTuristicos2);
         vitoriasCarta2 += (pontosTuristicos2 > pontosTuristicos1);
-        printf("Densidade Populacinal: %d\n", densidadePopulacional1 < densidadePopulacional2);
-        vitoriasCarta1 += (densidadePopulacional1 > densidadePopulacional2);
-        vitoriasCarta2 += (densidadePopulacional2 > densidadePopulacional1);
+        printf("Densidade Populacional: %d\n", densidadePopulacional1 < densidadePopulacional2);
+        vitoriasCarta1 += (densidadePopulacional1 < densidadePopulacional2);
+        vitoriasCarta2 += (densidadePopulacional2 < densidadePopulacional1);
         printf("PIB per Capita: %d\n", pibPerCapita1 > pibPerCapita2);
         vitoriasCarta1 += (pibPerCapita1 > pibPerCapita2);
         vitoriasCarta2 += (pibPerCapita2 > pibPerCapita1);
@@ -132,4 +136,4 @@ int main (){
         printf("Vitorias da Carta 2: %d\n", vitoriasCarta2);
 
         return  0;
-}
+    }
